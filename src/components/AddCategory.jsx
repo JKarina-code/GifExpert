@@ -3,24 +3,24 @@ import { useState } from "react";
 export const AddCategory = ({ onNewCategory }) => {
   const [inputValue, setInputValue] = useState([""]);
 
-  const onInputChange = ({ target }) => {
-    setInputValue(target.value);
+  const onInputChange = (e) => {
+    setInputValue(e.target.value);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (inputValue.trim().length <= 1) return;
-    onNewCategory(inputValue.trim());
-    setInputValue("");
-  };
+    if (inputValue.trim().length <= 1) return ;
 
+    setInputValue('')
+    onNewCategory(inputValue.trim())
+  };
   return (
     <form onSubmit={(e) => onSubmit(e)}>
       <input
         type="text"
-        placeholder=" Search Gifs"
+        placeholder="Search your gif"
         value={inputValue}
-        onChange={onInputChange}
+        onChange={(e) => onInputChange(e)}
       />
     </form>
   );
